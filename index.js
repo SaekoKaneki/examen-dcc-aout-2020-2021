@@ -4,6 +4,7 @@
 const eTimer = document.querySelector('.app__timer');
 const eButtonStop = document.querySelector('.app__controls__start');
 const eButtonTour = document.querySelector('.app__controls__lap');
+const eAppLap = document.querySelector('.app__laps');
 let iSecond =0;
 let iMinutes = 0;
 let iMillisecond=0;
@@ -34,9 +35,8 @@ eButtonStop.addEventListener('click',(event)=>{
 
 })
 eButtonTour.addEventListener('click',(event)=>{
-    //debugger
      if(eButtonStop.textContent ==='Stop'){
-         document.querySelector('.app__laps').insertAdjacentHTML("beforeend",`<li class="app__lap"><span class="app__lap-count">Tour ${iTour} </span> <time class="app__lap-value" datatype="XX:YY:ZZ">${iMinutes}:${iSecond}:${iMillisecond}</time></li>`);
+         document.querySelector('.app__laps').insertAdjacentHTML("beforeend",`<li class="app__lap"><span class="app__lap-count">Tour ${iTour} </span> <time class="app__lap-value" datatype="XX:YY:ZZ">${zero(iMinutes)}:${zero(iSecond)}:${zero(iMillisecond)}</time></li>`);
          iTour++;
      }
     if (eButtonTour.textContent ==='Effacer'){
@@ -44,12 +44,16 @@ eButtonTour.addEventListener('click',(event)=>{
         //document.querySelector('.app__laps').remove("");
         iSecond =0;
         iMinutes = 0;
-        iMillisecond=0;
+        iMillisecond = 0;
         iTour=1;
         eTimer.textContent = `${zero(iMinutes)}:${zero(iSecond)}:${zero(iMillisecond)}`;
     }
 });
+eAppLap.addEventListener('scroll', (event)=>{
+    if (iTour>5){
 
+    }
+})
 function upDate() {
     iMillisecond++
     eTimer.textContent = `${zero(iMinutes)}:${zero(iSecond)}:${zero(iMillisecond)}`;
